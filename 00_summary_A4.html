@@ -1,0 +1,463 @@
+<meta charset="utf-8">
+<title>교훈 동화 AI 심사보고서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* 교훈 동화 AI 심사보고서
+   paper #F7F9FB · ink #172033 · graphite #566175 · rule #D5DBE4 · seal #B23A2E · marker #FCEFB4
+   display Hahmlet · body IBM Plex Sans KR · utility IBM Plex Mono */
+:root {
+  --paper: #F7F9FB;
+  --sheet: #FFFFFF;
+  --ink: #172033;
+  --graphite: #566175;
+  --rule: #D5DBE4;
+  --wash: #EDF1F6;
+  --seal: #B23A2E;
+  --seal-wash: #F8E9E7;
+  --evidence: #2C6B61;
+  --evidence-wash: #E6F1EE;
+  --marker: #FCEFB4;
+  --bar: #9AA7BA;
+  --f-display: "Hahmlet", "Batang", "AppleMyungjo", serif;
+  --f-body: "IBM Plex Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  --f-mono: "IBM Plex Mono", "IBM Plex Sans KR", "Malgun Gothic", monospace;
+  --fs-body: 15px;
+  --fs-small: 13px;
+  --fs-table: 13px;
+  --fs-micro: 11.5px;
+  --fs-h1: 30px;
+  --fs-h2: 19px;
+  --fs-h3: 15px;
+  --gap: 18px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0F141C; --sheet: #141A24; --ink: #E4E8EF; --graphite: #9BA5B7; --rule: #2A3344;
+    --wash: #1A2231; --seal: #E0776B; --seal-wash: #2E1C1B; --evidence: #7CC0B2; --evidence-wash: #16282A;
+    --marker: #4A3F17; --bar: #5E6B80;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0F141C; --sheet: #141A24; --ink: #E4E8EF; --graphite: #9BA5B7; --rule: #2A3344;
+  --wash: #1A2231; --seal: #E0776B; --seal-wash: #2E1C1B; --evidence: #7CC0B2; --evidence-wash: #16282A;
+  --marker: #4A3F17; --bar: #5E6B80;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  padding-block: 28px 56px;
+  padding-inline: 16px;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--seal); outline-offset: 2px; border-radius: 2px; }
+.sheet {
+  max-width: 210mm;
+  margin-inline: auto;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  padding: clamp(18px, 4.5vw, 44px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+.sheet + .sheet { margin-top: 28px; }
+.runhead {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px;
+  font-family: var(--f-mono); font-size: var(--fs-micro); color: var(--graphite);
+  border-bottom: 1px solid var(--rule); padding-bottom: 6px; letter-spacing: 0.02em;
+}
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1 { font-family: var(--f-display); font-weight: 700; font-size: var(--fs-h1); line-height: 1.22; letter-spacing: -0.01em; }
+h2 { font-family: var(--f-display); font-weight: 600; font-size: var(--fs-h2); line-height: 1.3; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+h2 .phase { font-family: var(--f-mono); font-weight: 500; font-size: var(--fs-micro); color: var(--graphite); letter-spacing: 0.06em; }
+h3 { font-size: var(--fs-h3); font-weight: 600; line-height: 1.4; }
+p { margin: 0; }
+ul, ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 3px; }
+section.block { display: flex; flex-direction: column; gap: 8px; }
+.lede { color: var(--graphite); font-size: var(--fs-small); }
+.note { font-size: var(--fs-micro); color: var(--graphite); line-height: 1.5; }
+.small { font-size: var(--fs-small); }
+mark { background: var(--marker); color: inherit; padding: 0 0.12em; }
+.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+.verdict { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; }
+.seal {
+  width: 112px; height: 112px;
+  border: 3px solid var(--seal);
+  box-shadow: inset 0 0 0 4px var(--sheet), inset 0 0 0 5.5px var(--seal);
+  color: var(--seal);
+  display: grid; place-content: center; text-align: center;
+  transform: rotate(-4deg);
+  font-family: var(--f-display); line-height: 1.1;
+}
+.seal small { display: block; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; }
+.seal strong { display: block; font-size: 30px; font-weight: 700; margin-block: 4px 3px; }
+.thesis { display: flex; flex-direction: column; gap: 7px; }
+.thesis .claim { font-family: var(--f-display); font-weight: 600; font-size: 17px; line-height: 1.5; text-wrap: pretty; }
+
+.figures { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); }
+.figures > div { padding: 8px 10px 9px; display: flex; flex-direction: column; gap: 2px; }
+.figures > div + div { border-left: 1px solid var(--rule); }
+.figures .k { font-size: var(--fs-micro); color: var(--graphite); }
+.figures .v { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: 18px; font-weight: 500; line-height: 1.25; }
+.figures .d { font-size: var(--fs-micro); color: var(--graphite); line-height: 1.4; }
+
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); align-items: start; }
+
+.tbl { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: var(--fs-table); line-height: 1.45; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; vertical-align: top; padding: 5px 7px; border-bottom: 1px solid var(--rule); }
+th { background: var(--wash); font-weight: 600; font-size: var(--fs-micro); letter-spacing: 0.01em; }
+td.c, th.c { text-align: center; }
+td strong { font-weight: 600; }
+
+.tag { display: inline-block; font-family: var(--f-mono); font-size: 10.5px; line-height: 1.5; padding: 0 6px; border-radius: 3px; white-space: nowrap; }
+.tag.stop { background: var(--seal-wash); color: var(--seal); }
+.tag.live { background: var(--evidence-wash); color: var(--evidence); }
+.tag.mid { background: var(--wash); color: var(--graphite); }
+
+blockquote.problem {
+  margin: 0; padding-block: 8px;
+  border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule);
+  font-family: var(--f-display); font-weight: 600; font-size: 16px; line-height: 1.5; text-wrap: pretty;
+}
+.uvp { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.uvp > div { border-top: 2px solid var(--ink); padding-top: 6px; display: flex; flex-direction: column; gap: 3px; }
+.uvp .lbl { font-family: var(--f-mono); font-size: var(--fs-micro); color: var(--graphite); letter-spacing: 0.04em; }
+.uvp .q { font-family: var(--f-display); font-weight: 700; font-size: 15px; line-height: 1.35; text-wrap: balance; }
+.uvp p { font-size: var(--fs-small); color: var(--graphite); }
+
+.bars { display: flex; flex-direction: column; gap: 5px; }
+.bar-row { display: grid; grid-template-columns: minmax(0, 1fr) 140px 40px; gap: 10px; align-items: center; font-size: var(--fs-small); }
+.bar-track { height: 8px; background: var(--wash); position: relative; }
+.bar-fill { position: absolute; inset: 0 auto 0 0; background: var(--bar); }
+.bar-fill.hi { background: var(--seal); }
+.bar-val { font-family: var(--f-mono); font-variant-numeric: tabular-nums; text-align: right; font-size: var(--fs-micro); }
+.bar-axis { display: grid; grid-template-columns: minmax(0, 1fr) 140px 40px; gap: 10px; font-family: var(--f-mono); font-size: 10px; color: var(--graphite); }
+.bar-axis span:nth-child(2) { display: flex; justify-content: space-between; }
+
+.kill { border: 1.5px solid var(--seal); background: var(--seal-wash); padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+.kill h3 { color: var(--seal); }
+
+sup.c { font-family: var(--f-mono); font-size: 0.64em; color: var(--graphite); margin-left: 1px; }
+sup.c a { text-decoration: none; }
+.cols2 { columns: 2; column-gap: 24px; padding-left: 0; display: block; }
+.cols2 li { break-inside: avoid; margin: 0 0 2px 1.3em; }
+.sources { font-family: var(--f-mono); font-size: 10.5px; line-height: 1.45; color: var(--graphite); columns: 2; column-gap: 20px; padding-left: 0; display: block; }
+.sources li { break-inside: avoid; overflow-wrap: anywhere; margin: 0 0 2px 2.6em; }
+caption { caption-side: top; text-align: left; font-size: var(--fs-micro); color: var(--graphite); padding-bottom: 4px; }
+footer.end { font-size: var(--fs-micro); color: var(--graphite); border-top: 1px solid var(--rule); padding-top: 6px; }
+
+@media (max-width: 720px) {
+  .two, .uvp { grid-template-columns: 1fr; }
+  .figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .figures > div:nth-child(3) { border-left: 0; }
+  .figures > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .verdict { grid-template-columns: 1fr; justify-items: start; }
+  .sources, .cols2 { columns: 1; }
+  .bar-row, .bar-axis { grid-template-columns: minmax(0, 1fr) 90px 36px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+@page { size: A4; margin: 9mm 10mm; }
+@media print {
+  :root, :root:not([data-theme="light"]), :root[data-theme="dark"] {
+    --paper: #FFFFFF; --sheet: #FFFFFF; --ink: #172033; --graphite: #566175; --rule: #D5DBE4;
+    --wash: #EDF1F6; --seal: #B23A2E; --seal-wash: #F8E9E7; --evidence: #2C6B61; --evidence-wash: #E6F1EE;
+    --marker: #FCEFB4; --bar: #9AA7BA;
+    --fs-body: 8.8pt; --fs-small: 8.1pt; --fs-table: 7.6pt; --fs-micro: 6.9pt;
+    --fs-h1: 16.5pt; --fs-h2: 10.8pt; --fs-h3: 8.8pt; --gap: 3mm;
+  }
+  body { padding: 0; line-height: 1.4; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sheet { max-width: none; border: 0; padding: 0; break-after: page; gap: var(--gap); }
+  .sheet:last-of-type { break-after: auto; }
+  .sheet + .sheet { margin-top: 0; }
+  .seal { width: 23mm; height: 23mm; }
+  .seal strong { font-size: 17pt; }
+  .seal small { font-size: 5.6pt; }
+  .thesis .claim { font-size: 10.4pt; }
+  .figures .v { font-size: 11.4pt; }
+  .figures > div { padding: 4px 6px 5px; }
+  th, td { padding: 2.2px 4px; }
+  .tag { font-size: 6.4pt; padding: 0 3px; }
+  blockquote.problem { font-size: 9.8pt; padding-block: 4px; }
+  .uvp .q { font-size: 9.6pt; }
+  .bar-row, .bar-axis { grid-template-columns: minmax(0, 1fr) 42mm 9mm; }
+  .bar-track { height: 5px; }
+  .sources { font-size: 6.3pt; column-gap: 5mm; line-height: 1.35; }
+  .kill { padding: 2.2mm 3mm; }
+  ul, ol { gap: 1.5px; }
+  a { text-decoration: none; }
+  table, .kill, .bars, .figures, .uvp { break-inside: avoid; }
+}
+</style>
+
+<main>
+
+<!-- ───────────── 1 / 4 ───────────── -->
+<section class="sheet" aria-label="1쪽: 판정">
+  <div class="runhead"><span>교훈 동화 AI · 시장검증 심사보고서</span><span>심사일 2026-09-15 · 1 / 4</span></div>
+
+  <header class="verdict">
+    <div class="seal" role="img" aria-label="심사 판정 도장: 피봇"><small>심사 판정</small><strong>피봇</strong><small>2026·09·15</small></div>
+    <div class="thesis">
+      <h1>교훈 동화 AI 심사보고서</h1>
+      <p class="claim">동화 생성은 이미 무료다. 남는 가치는 아이가 교훈을 자기 말로 말하게 만드는 질문과, 그 질문을 부모에게 넘기는 대화뿐이다. ‘AI 친구’가 아니라 부모가 쓰는 도구로 팔아야 규제·원가·수요를 통과한다.</p>
+      <p class="lede">검증 대상: 부모가 교훈을 입력하면 AI가 동화·애니메이션을 만들고, 아이가 캐릭터와 대화하며 체득하는 서비스. 한국 기준, 투자심사역 관점(반증 우선). 추정치는 ‘추정’, 2023-09-15 이전 자료는 ‘구자료’로 표기.</p>
+    </div>
+  </header>
+
+  <div class="figures">
+    <div><span class="k">SAM · 5~9세 × 8%</span><span class="v">160억 원</span><span class="d">TAM 2,621억 · 3년 차 SOM 1.3억~6.3억 원/년 (추정, 월 9,900원)</span></div>
+    <div><span class="k">핵심 타깃 만 5~6세</span><span class="v">59.1만→47.9만</span><span class="d">2025 실측 → 2029 저점, −19% (추정)</span></div>
+    <div><span class="k">월 9,900원 공헌이익률</span><span class="v">24%</span><span class="d">최저가 이미지 조합 + 애니메이션 제외일 때만</span></div>
+    <div><span class="k">한국 L1 경쟁사</span><span class="v">0곳</span><span class="d">해외 1곳(평가 1건) · 중단·피봇 16건</span></div>
+  </div>
+
+  <section class="block">
+    <h2><span class="phase">판정 근거</span>원안 그대로 만들면 안 되는 다섯 가지 이유</h2>
+    <div class="tbl"><table>
+      <thead><tr><th style="width:26%">근거</th><th>증거</th></tr></thead>
+      <tbody>
+        <tr><td><strong>① 교훈 → 동화는 이미 무료 기능</strong></td><td>Gemini Storybook(2025-08 출시)의 공식 예시가 교훈 가르치기다<sup class="c"><a href="#s1">1</a></sup>. Meta StoryKit이 교훈 선택 기능으로 파일럿 중이다<sup class="c"><a href="#s2">2</a></sup>. AI 생성물은 저작권 등록이 불가능하다<sup class="c"><a href="#s29">29</a></sup></td></tr>
+        <tr><td><strong>② 한국 B2C 시장이 작고 줄어든다</strong></td><td>추정: SAM 160억, SOM 1.3억~6.3억 원/년. 사교육 통계에 ‘인성·정서’ 항목이 없다<sup class="c"><a href="#s12">12</a></sup><sup class="c"><a href="#s13">13</a></sup>. 5~6세 인구는 2029년까지 −19%(추정)<sup class="c"><a href="#s10">10</a></sup><sup class="c"><a href="#s11">11</a></sup></td></tr>
+        <tr><td><strong>③ 차별점이 규제의 표적</strong></td><td>Character.AI가 18세 미만 자유대화를 폐지했다<sup class="c"><a href="#s7">7</a></sup>. 캘리포니아 SB 1119는 기억 기능을 기본 off로<sup class="c"><a href="#s23">23</a></sup>, SB 867은 AI 챗봇 장난감을 금지했다<sup class="c"><a href="#s22">22</a></sup>. 한국은 보호자 대화 열람·연령확인 개정안이 계류 중이다<sup class="c"><a href="#s21">21</a></sup></td></tr>
+        <tr><td><strong>④ 효과의 근거는 ‘부모’ 쪽에 있다</strong></td><td>유치원생 대다수가 교훈을 오해했다<sup class="c"><a href="#s17">17</a></sup>. “왜 그랬을까?” 같은 설명 유도가 교훈 추상화를 돕는다<sup class="c"><a href="#s18">18</a></sup>. 효과는 부모가 대화할 때만 나타났다<sup class="c"><a href="#s19">19</a></sup></td></tr>
+        <tr><td><strong>⑤ 애니메이션은 원가상 불가</strong></td><td>추정: 1분 애니메이션 ₩4,200~16,800, 동화 1편 ₩249<sup class="c"><a href="#s15">15</a></sup>. 월 9,900원 구독은 최저가 조합에 대화 상한을 둘 때만 흑자다</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <div class="two">
+    <section class="block">
+      <h2><span class="phase">P1 · 경쟁</span>L1은 없고, 해 본 곳은 사라졌다</h2>
+      <ul class="small">
+        <li>한국 L1은 0곳, 해외 L1은 Youstory 1곳(평가 1건)이다<sup class="c"><a href="#s37">37</a></sup>. 대표 선례 Heeyo(시드 350만 달러)는 사이트·스토어가 모두 404라 중단으로 추정된다<sup class="c"><a href="#s3">3</a></sup>.</li>
+        <li>견인력은 영어와 인형에만 있다. Buddy.ai는 다운로드 5,000만 회를 넘었다<sup class="c"><a href="#s33">33</a></sup>. 국내 대기업의 캐릭터 대화는 모두 영어 학습용이다<sup class="c"><a href="#s40">40</a></sup>.</li>
+        <li>실패 16건의 공통 원인은 부적절 발화·프라이버시(FoloToy<sup class="c"><a href="#s5">5</a></sup>·Bondu<sup class="c"><a href="#s6">6</a></sup>), 규제(Character.AI<sup class="c"><a href="#s7">7</a></sup>·Mattel<sup class="c"><a href="#s8">8</a></sup>), 클라우드·자금(Moxie<sup class="c"><a href="#s4">4</a></sup>)이다. 국내 최대 잠재 진입자는 핑크퐁의 100억 원 AI 대화 과제다<sup class="c"><a href="#s9">9</a></sup>.</li>
+      </ul>
+    </section>
+    <section class="block">
+      <h2><span class="phase">P2 · 시장</span>작고, 줄고, 예산 라인이 없다</h2>
+      <ul class="small">
+        <li>출생아는 2025년 254,341명(+6.7%), 2026년 상반기 +15.4%로 반등했다<sup class="c"><a href="#s10">10</a></sup>. 하지만 반등이 5~6세에 닿는 것은 2031년 무렵이다.</li>
+        <li>‘인성·정서’ 사교육 항목은 없다. 대리지표인 초중고 취미·교양이 6,945억 원(2.52%)이다<sup class="c"><a href="#s12">12</a></sup>. 유아 사교육 수강 목적 1위는 ‘입학 준비’(67.6%)다<sup class="c"><a href="#s13">13</a></sup>.</li>
+        <li>대중 키즈 지출은 줄고 있다(초등 사교육 −7.9%<sup class="c"><a href="#s12">12</a></sup>, 토종 완구 5사 −31.4%<sup class="c"><a href="#s39">39</a></sup>). 해외에서 크는 것은 화면 없는 오디오다(tonies FY2025 €630.3M, +31.2%)<sup class="c"><a href="#s30">30</a></sup>.</li>
+      </ul>
+    </section>
+  </div>
+</section>
+
+<!-- ───────────── 2 / 4 ───────────── -->
+<section class="sheet" aria-label="2쪽: 타깃·규제·문제">
+  <div class="runhead"><span>교훈 동화 AI · 시장검증 심사보고서</span><span>P3 타깃 · P4 규제 · P5 문제 · 2 / 4</span></div>
+
+  <section class="block">
+    <h2><span class="phase">P3 · 타깃</span>핵심 만 5~6세, 확장 만 7~9세</h2>
+    <div class="tbl"><table>
+      <thead><tr><th style="width:11%">구간</th><th class="c" style="width:8%">점수</th><th style="width:9%">판단</th><th>결정 근거</th></tr></thead>
+      <tbody>
+        <tr><td>0~2세</td><td class="c num">1.0</td><td><span class="tag stop">제외</span></td><td>WHO: 1세 미만 화면 권장 안 함, 2세는 하루 1시간 이하<sup class="c"><a href="#s16">16</a></sup>. 대화가 불가능하다</td></tr>
+        <tr><td>3~4세</td><td class="c num">3.0</td><td><span class="tag mid">보류</span></td><td>캐릭터 몰입과 훈육 고민은 가장 크다. 그러나 하루 1시간 상한이 있고, 3~9세는 이미 하루 185.9분 화면을 본다<sup class="c"><a href="#s38">38</a></sup>. 교훈 추출은 가장 약하다</td></tr>
+        <tr><td><strong>5~6세</strong></td><td class="c num"><strong>4.0</strong></td><td><span class="tag live">핵심</span></td><td>설명을 유도하면 교훈을 추상화한다(5~6세 실험)<sup class="c"><a href="#s18">18</a></sup>. 5세 사교육 참여율 81.2%<sup class="c"><a href="#s13">13</a></sup>. WHO 5세 미만 지침 밖이다</td></tr>
+        <tr><td>7~9세</td><td class="c num">3.5</td><td><span class="tag live">확장</span></td><td>스스로 읽고 스크린 규범이 느슨하다. 늘봄학교 ‘사회·정서’ 경로가 있다<sup class="c"><a href="#s35">35</a></sup>. 동화 포맷 매력과 인성 지출 동기는 약해진다</td></tr>
+        <tr><td>10~12세</td><td class="c num">2.5</td><td><span class="tag stop">제외</span></td><td>동화 포맷이 맞지 않는다. 스스로 기기를 쓰고(초등생 과의존 41.2%)<sup class="c"><a href="#s31">31</a></sup> AI 동반자 위험이 청소년에 가깝다</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">설계 조건: ① 벌 중심 교훈 이야기는 효과가 없으므로<sup class="c"><a href="#s36">36</a></sup> 긍정적 결과 프레임으로 생성 ② 캐릭터는 가르치지 않고 묻는다<sup class="c"><a href="#s18">18</a></sup> ③ 부모 대화 루프 필수<sup class="c"><a href="#s19">19</a></sup> ④ 음성 우선, 세션 15~20분.</p>
+  </section>
+
+  <section class="block">
+    <h2><span class="phase">P4 · 규제</span>지금은 개인정보법이 묶고, 곧 ‘관계형 AI’ 규제가 온다</h2>
+    <div class="tbl"><table>
+      <thead><tr><th style="width:17%">관할·항목</th><th style="width:38%">핵심</th><th style="width:22%">우리에게</th><th>대응 설계</th></tr></thead>
+      <tbody>
+        <tr><td>한국 AI 기본법</td><td>아동 조항이 없다. 교육 분야 고영향 AI는 ‘학생 평가’로 한정된다</td><td>추가 의무 없음(AI 고지만)</td><td>발달 ‘평가’ 기능을 넣지 않는다</td></tr>
+        <tr><td>개인정보보호법 제22조의2</td><td>만 14세 미만은 법정대리인 동의가 필요하다. 위반하면 매출 3%(매출이 없으면 20억 원) 과징금과 5년 이하 징역<sup class="c"><a href="#s20">20</a></sup></td><td>5~6세 전원이 동의 대상</td><td>부모 계정·본인인증, 아이 데이터 학습 금지</td></tr>
+        <tr><td>한국 개정안 3건</td><td>연령확인, 보호자 대화 열람, 이용시간 제한(과방위 계류)<sup class="c"><a href="#s21">21</a></sup></td><td>통과하면 필수 기능이 된다</td><td>부모 대시보드를 v1에 넣는다</td></tr>
+        <tr><td>미국 COPPA·캘리포니아</td><td>COPPA 개정규칙 전면 적용(2026-04-22)<sup class="c"><a href="#s24">24</a></sup>. SB 1119: 기억 off, 세션 1시간·하루 2시간<sup class="c"><a href="#s23">23</a></sup>. SB 867: AI 챗봇 장난감 판매 금지(~2031)<sup class="c"><a href="#s22">22</a></sup></td><td>하드웨어 경로 차단, 기억 기능 기본 off</td><td>앱 전용, 기억은 부모가 켤 때만</td></tr>
+        <tr><td>소송·전문가 경고</td><td>법원이 ‘챗봇 = 제조물’로 판단한 뒤 합의했다<sup class="c"><a href="#s32">32</a></sup>. Common Sense Media는 AI 장난감 응답의 4분의 1 이상이 부적절하다며 5세 이하 비권장<sup class="c"><a href="#s25">25</a></sup></td><td>자유대화형 캐릭터가 1순위 표적</td><td>장면에 묶인 짧은 대화 + 부모 동석</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="block">
+    <h2><span class="phase">P5 · 문제·UVP</span>문제를 다시 쓰면: 전달이 아니라 설명</h2>
+    <blockquote class="problem">5~6세에게 가치는 이야기로 ‘전달’되지 않는다. 인물의 행동을 ‘설명해 볼 때’ 전달된다. 부모에게는 그 질문을 매번 설계할 시간이 없다.</blockquote>
+    <p class="note">원안의 전제(“교훈을 전할 도구가 없다”)는 무료 도구가 이미 풀었다<sup class="c"><a href="#s1">1</a></sup>. 돈을 내는 사람은 부모, 쓰는 사람은 아이다. 결제는 상황 트리거에서 일어난다: 동생 출생 · “친구를 때렸어요” 알림장 · 첫 거짓말 · 입학 준비 · 스마트폰 떼쓰기 · 생활습관 · 첫 등원 · 반복 공격행동 · 사별·이사 · 명절 선물. 다만 트리거별 직접 결제 데이터는 0건이다.</p>
+    <div class="uvp">
+      <div><span class="lbl">UVP 1 · 상황형</span><span class="q">오늘 있었던 일, 오늘 밤 이야기로</span><p>상황 한 줄 → 5분 오디오 동화 + 캐릭터 질문 + 부모 질문 카드</p></div>
+      <div><span class="lbl">UVP 2 · 효과형</span><span class="q">잔소리 대신 아이가 먼저 말하는 교훈</span><p>캐릭터는 가르치지 않고 묻는다. 근거는 설명 유도 연구다<sup class="c"><a href="#s18">18</a></sup></p></div>
+      <div><span class="lbl">UVP 3 · 신뢰형</span><span class="q">부모가 고르고 부모가 보는 AI 동화</span><p>대화는 장면 안에서만 하고, 기록은 부모만 보며, 아이 데이터는 학습에 쓰지 않는다</p></div>
+    </div>
+    <p class="small"><strong>AI 동화 생성을 빼도 가치가 남는가?</strong> 대부분 남는다. 효과의 근거는 대화와 부모 루프에 있다. 생성은 이미 무료이고, 저작권으로 보호받지 못하며<sup class="c"><a href="#s29">29</a></sup>, 원가의 80~93%를 차지한다. 검수된 이야기 라이브러리에 대화를 얹는 편이 원가·품질·안전 모두에서 낫다. 생성은 드문 상황을 채우는 보조 기능으로 둔다.</p>
+  </section>
+</section>
+
+<!-- ───────────── 3 / 4 ───────────── -->
+<section class="sheet" aria-label="3쪽: 수익모델·사전 부검">
+  <div class="runhead"><span>교훈 동화 AI · 시장검증 심사보고서</span><span>P5 수익모델 · P6 사전 부검 · 3 / 4</span></div>
+
+  <section class="block">
+    <h2><span class="phase">P5 · 수익모델</span>돈은 어디서 나오나: 현실성 ‘중’은 둘뿐</h2>
+    <div class="tbl"><table>
+      <thead><tr><th style="width:22%">모델</th><th style="width:14%">누가 내나</th><th>핵심 장벽</th><th class="c" style="width:9%">현실성</th></tr></thead>
+      <tbody>
+        <tr><td>B2C 상시 구독</td><td>부모</td><td>추정: 교육 앱은 설치 1,000건 중 1년 뒤 유료로 남는 곳이 4~6가구다. AI 앱은 이탈이 30% 더 빠르다<sup class="c"><a href="#s14">14</a></sup></td><td class="c"><span class="tag stop">하</span></td></tr>
+        <tr><td><strong>B2C 상황별 패스</strong></td><td>부모</td><td>트리거 10개가 있지만 직접 결제 데이터는 0건이다(가설 단계)</td><td class="c"><span class="tag live">중</span></td></tr>
+        <tr><td>어린이집·유치원 운영비</td><td>원장</td><td>교사가 쓰는 콘텐츠는 부모에게 청구할 수 없다<sup class="c"><a href="#s26">26</a></sup>. 교사 자료는 연 5만~7만 원이 기준 가격이다<sup class="c"><a href="#s42">42</a></sup></td><td class="c"><span class="tag stop">하</span></td></tr>
+        <tr><td><strong>특별활동 강사 파견형</strong></td><td>부모(필요경비)</td><td>외부 강사만 가능하고 24개월 이상·낮 12~18시로 제한된다. 상위 과목은 체육·음악·영어다<sup class="c"><a href="#s26">26</a></sup></td><td class="c"><span class="tag live">중</span></td></tr>
+        <tr><td>늘봄학교(초1~2)</td><td>교육청</td><td>돈이 강사료로 흐른다. 교재는 자체 개발이 원칙이고 계약은 최대 2년이다<sup class="c"><a href="#s35">35</a></sup></td><td class="c"><span class="tag mid">중~하</span></td></tr>
+        <tr><td>교육청·도서관 사업</td><td>지자체</td><td>1회성·소규모다(강원 사례: 어린이집 1곳 35명)</td><td class="c"><span class="tag stop">하</span></td></tr>
+        <tr><td>중앙정부·공공 플랫폼</td><td>정부</td><td>AI 디지털교과서가 격하되자 도입 학교가 58.8% 줄었다<sup class="c"><a href="#s27">27</a></sup>. 공공이 무료로 공급한다</td><td class="c"><span class="tag stop">하</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="tbl"><table>
+      <caption>단위경제 (추정, ₩1,400/USD 가정, 공식 가격표 기준<sup class="c"><a href="#s15">15</a></sup>)</caption>
+      <thead><tr><th style="width:45%">항목</th><th>원가·수익</th></tr></thead>
+      <tbody>
+        <tr><td>10쪽 그림 동화 1편(이미지가 원가의 80~93%)</td><td class="num">₩249 ~ ₩1,306</td></tr>
+        <tr><td>1분 애니메이션(재생성 2배 포함)</td><td class="num">₩4,200 ~ ₩16,800</td></tr>
+        <tr><td>캐릭터 음성 대화 10분</td><td class="num">₩174 ~ ₩1,120</td></tr>
+        <tr><td>월 원가(주 3편 + 주 3회 대화)</td><td class="num">₩5,785 ~ ₩20,857</td></tr>
+        <tr><td>월 9,900원 순매출(VAT·수수료 15% 차감)</td><td class="num">₩7,650 → 흑자는 ₩5,785 조합뿐</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="block">
+    <h2><span class="phase">P6 · 사전 부검</span>2년 뒤 망했다면, 이 이유들로</h2>
+    <div class="bars" role="list" aria-label="실패 시나리오별 확률">
+      <div class="bar-row" role="listitem"><span>리텐션 붕괴: 첫 달이 지나면 아이가 찾지 않는다</span><span class="bar-track"><span class="bar-fill hi" style="width:50%"></span></span><span class="bar-val">50%</span></div>
+      <div class="bar-row" role="listitem"><span>수요 부재: 부모는 ‘교훈’에 돈을 내지 않는다</span><span class="bar-track"><span class="bar-fill hi" style="width:45%"></span></span><span class="bar-val">45%</span></div>
+      <div class="bar-row" role="listitem"><span>획득비용 &gt; 생애가치(설치당 허용 224~687원)</span><span class="bar-track"><span class="bar-fill hi" style="width:40%"></span></span><span class="bar-val">40%</span></div>
+      <div class="bar-row" role="listitem"><span>무료 대체재·대기업 번들에 잠식</span><span class="bar-track"><span class="bar-fill" style="width:35%"></span></span><span class="bar-val">35%</span></div>
+      <div class="bar-row" role="listitem"><span>효과 입증 실패: “좋아하는데 달라진 게 없다”</span><span class="bar-track"><span class="bar-fill" style="width:30%"></span></span><span class="bar-val">30%</span></div>
+      <div class="bar-row" role="listitem"><span>원가 구조 붕괴(애니메이션·헤비유저)</span><span class="bar-track"><span class="bar-fill" style="width:25%"></span></span><span class="bar-val">25%</span></div>
+      <div class="bar-row" role="listitem"><span>안전사고 1건 → 모델 공급 차단</span><span class="bar-track"><span class="bar-fill" style="width:15%"></span></span><span class="bar-val">15%</span></div>
+      <div class="bar-row" role="listitem"><span>개인정보 사고·규제 강화로 핵심 기능 금지</span><span class="bar-track"><span class="bar-fill" style="width:15%"></span></span><span class="bar-val">15%</span></div>
+      <div class="bar-axis" aria-hidden="true"><span></span><span><span>0</span><span>50</span><span>100%</span></span><span></span></div>
+    </div>
+    <p class="note">확률은 각 시나리오가 종료의 주원인이 될 가능성에 대한 애널리스트 판단값이다. 서로 겹치므로 합이 100%가 아니다. 조기 신호·회피 설계·대안은 06 파일에 있다.</p>
+    <div class="kill">
+      <h3>킬 크라이테리아: 하나라도 걸리면 접는다</h3>
+      <ol class="small">
+        <li><strong>K1 수요:</strong> 2주 스모크 테스트에서 가격을 본 뒤 사전예약 클릭이 방문자의 2% 미만이고, 최근 6개월 안에 이 문제로 돈을 쓴 부모가 15명 중 5명 미만</li>
+        <li><strong>K2 효과·재사용:</strong> 컨시어지 10가정 중 2주차에 스스로 다시 요청한 가정이 3곳 미만이거나, 대화 조건에서 아이가 교훈을 자기 말로 말한 비율이 부모 읽기보다 10%p 이상 높지 않음</li>
+        <li><strong>K3 안전·경제성:</strong> 준법 설계 프로토타입에서 레드팀 치명 응답이 2회 연속 재현되거나, 월 원가가 순매출의 60%를 넘음</li>
+      </ol>
+    </div>
+  </section>
+</section>
+
+<!-- ───────────── 4 / 4 ───────────── -->
+<section class="sheet" aria-label="4쪽: 피봇·검증·출처">
+  <div class="runhead"><span>교훈 동화 AI · 시장검증 심사보고서</span><span>피봇안 · P7 검증 · 미확인 · 출처 · 4 / 4</span></div>
+
+  <section class="block">
+    <h2><span class="phase">피봇</span>세 가지 방향과 추천 순서</h2>
+    <div class="tbl"><table>
+      <thead><tr><th style="width:20%">안</th><th style="width:30%">무엇</th><th style="width:26%">장점</th><th>단점</th></tr></thead>
+      <tbody>
+        <tr><td><strong>P1 부모 대화 코치형 상황 오디오 동화</strong><br><span class="tag live">첫 검증 권장</span></td><td>부모가 상황을 한 줄 적으면 5분 오디오 동화(검수 라이브러리 우선) + 캐릭터 질문 3개(부모 동석) + 부모 질문 카드. 상황별 4주 패스 9,900원</td><td>근거 있는 메커니즘, 가장 낮은 원가, 스크린 규범 회피, 작은 규제 리스크, 2주 안에 검증 가능</td><td>한국 B2C 시장이 작다. 무료 도구와의 차이가 설계뿐이다. 패스형이라 재구매가 필요하다</td></tr>
+        <tr><td><strong>P2 IP 홀더·통신사용 교훈 대화 엔진</strong>(B2B)</td><td>세계관 안전 레이어 + 설명 유도 대화 + 부모 리포트를 핑크퐁·SAMG·통신사 키즈 플랫폼에 공급</td><td>획득비용과 무명 캐릭터 문제를 푼다. IP 홀더가 이미 투자 중이다<sup class="c"><a href="#s9">9</a></sup>. 준법 역량이 곧 상품이다</td><td>영업 주기가 길고 소수 고객에 의존한다. 핑크퐁은 이미 컨소시엄이 있다</td></tr>
+        <tr><td><strong>P3 교사용 인성 수업 키트</strong>(B2B2C·늘봄 강사형)</td><td>교사가 반 상황을 입력하면 반 단위 이야기 + 교사 진행 질문 + 가정 연계 카드(알림장)</td><td>교사가 중재자가 된다(효과 조건). 아이와 AI의 직접 대화가 없다. 늘봄 ‘사회·정서’ 영역이 있다<sup class="c"><a href="#s35">35</a></sup></td><td>기관 예산이 작고, 기관 수는 2018년 대비 −36%다<sup class="c"><a href="#s41">41</a></sup>. 조달이 느리다<sup class="c"><a href="#s27">27</a></sup></td></tr>
+      </tbody>
+    </table></div>
+    <p class="small"><strong>추천 순서:</strong> P1으로 2주 검증 → 교사 인터뷰 신호가 강하면 P3 병행 → 대화 엔진이 입증되면 P2로 확장.</p>
+  </section>
+
+  <section class="block">
+    <h2><span class="phase">P7 · 검증</span>2주·0원, 성공 기준은 첫날 고정</h2>
+    <div class="tbl"><table>
+      <thead><tr><th style="width:17%">가설(위험 순)</th><th style="width:40%">방법·표본</th><th>성공 기준</th></tr></thead>
+      <tbody>
+        <tr><td>H1 지불</td><td>부모 인터뷰 15명(Mom Test) + 랜딩 방문 300명 이상</td><td>관련 지출 사례 8/15명 이상 · 등록 10% 이상 · 사전예약 3% 이상</td></tr>
+        <tr><td>H2 AI 대화 수용</td><td>컨시어지 초대 20가정(부모 동석·녹음 없음)</td><td>10/20가정 이상 참여 동의</td></tr>
+        <tr><td>H3 효과</td><td>10가정 교차 비교: 읽기만 vs 읽기 + 캐릭터 질문(팀원이 캐릭터 연기)</td><td>교훈을 자기 말로 표현한 비율이 20%p 이상 높음</td></tr>
+        <tr><td>H4 반복</td><td>11일 동안 요청할 때만 제공, 재요청 기록</td><td>2주차에 2회 이상 재요청한 가정 5/10 이상</td></tr>
+        <tr><td>H5 채널</td><td>무료 채널별 링크 추적 + 교사 인터뷰 10명</td><td>등록 30명 이상 · 교사 3/10명 이상 시범 수락</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="block">
+    <h3>확인하지 못한 것 · 데이터가 없는 것</h3>
+    <ul class="cols2 note">
+      <li>한국 부모의 ‘3~6세 자녀와 AI 대화 허용’ 설문: 없음</li>
+      <li>한국 유아(3~6세) 생성형 AI 이용률: 조사 자체가 없음</li>
+      <li>‘인성·정서’ 사교육 지출: 통계 항목 자체가 없음</li>
+      <li>트리거별 실제 결제 전환: 10개 중 0개 확인</li>
+      <li>한국 키즈 앱 유료 가입자·리텐션·설치당 광고비</li>
+      <li>AI 대화로 가치를 ‘체득’했음을 보인 연구: 못 찾음</li>
+      <li>한국어 3~6세 발화 음성인식 정확도</li>
+      <li>Heeyo 종료 사유, Moxie 누적 투자·판매 대수</li>
+      <li>Gemini Storybook 한국어 지원·가격</li>
+      <li>개인정보위의 아동 음성 해설, 아동 AI 처분 사례</li>
+      <li>SB 867 시행일·벌칙, 뉴욕 S9408A 서명 여부</li>
+      <li>법령 공식 원문 대조(비공식 게재본 사용)</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>주요 출처 (URL · 발행일)</h3>
+    <ol class="sources">
+      <li id="s1"><a href="https://blog.google/products/gemini/storybooks/">blog.google/products/gemini/storybooks</a> · 2025-08-05</li>
+      <li id="s2"><a href="https://techcrunch.com/2026/07/21/meta-is-testing-an-ai-bedtime-story-app-for-people-with-no-imagination/">techcrunch.com/2026/07/21/meta-is-testing-an-ai-bedtime-story-app…</a> · 2026-07-21</li>
+      <li id="s3"><a href="https://techcrunch.com/2024/08/01/heeyo-built-an-ai-chatbot-to-be-a-billion-kids-interactive-tutor-and-friend/">techcrunch.com/2024/08/01/heeyo-built-an-ai-chatbot…</a> · 2024-08-01</li>
+      <li id="s4"><a href="https://aftermath.site/moxie-robot-ai-dying-llm-embodied/">aftermath.site/moxie-robot-ai-dying-llm-embodied</a> · 2024-12-09</li>
+      <li id="s5"><a href="https://futurism.com/artificial-intelligence/openai-blocks-toymaker-ai-teddy-bear">futurism.com/…/openai-blocks-toymaker-ai-teddy-bear</a> · 2025-11-17</li>
+      <li id="s6"><a href="https://www.malwarebytes.com/blog/news/2026/02/an-ai-plush-toy-exposed-thousands-of-private-chats-with-children">malwarebytes.com/blog/news/2026/02/an-ai-plush-toy-exposed…</a> · 2026-02-03</li>
+      <li id="s7"><a href="https://blog.character.ai/u18-chat-announcement/">blog.character.ai/u18-chat-announcement</a> · 2025-10-29</li>
+      <li id="s8"><a href="https://futurism.com/artificial-intelligence/mattel-scraps-plans-openai-toy">futurism.com/…/mattel-scraps-plans-openai-toy</a> · 2025-12-16</li>
+      <li id="s9"><a href="https://m.ddaily.co.kr/page/view/2025102410384156449">m.ddaily.co.kr/page/view/2025102410384156449</a> · 2025-10-24</li>
+      <li id="s10"><a href="https://mods.go.kr/board.es?act=view&amp;bid=204&amp;list_no=446625&amp;mid=a10301020300">mods.go.kr 2025년 출생 통계</a> · 2026-08-26</li>
+      <li id="s11"><a href="https://www.koreaeducare.or.kr/home/sub03.php?mid=19&amp;r=view&amp;uid=7340">koreaeducare.or.kr 2025 보육통계</a> · 2026-04-30</li>
+      <li id="s12"><a href="https://mods.go.kr/board.es?act=view&amp;bid=245&amp;list_no=443953&amp;mid=a10301010000">mods.go.kr 2025 초중고사교육비조사</a> · 2026-03-12</li>
+      <li id="s13"><a href="https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&amp;boardSeq=102822&amp;lev=0&amp;m=020402">moe.go.kr 2024 유아사교육비 시험조사</a> · 2025-03-13</li>
+      <li id="s14"><a href="https://www.revenuecat.com/state-of-subscription-apps/">revenuecat.com/state-of-subscription-apps</a> · 2026</li>
+      <li id="s15"><a href="https://ai.google.dev/gemini-api/docs/pricing">ai.google.dev/gemini-api/docs/pricing</a> · 2026-09-11</li>
+      <li id="s16"><a href="https://www.who.int/news/item/24-04-2019-to-grow-up-healthy-children-need-to-sit-less-and-play-more">who.int/news/item/24-04-2019-to-grow-up-healthy…</a> · 2019-04-24 구자료</li>
+      <li id="s17"><a href="https://doi.org/10.1080/15213260802204355">doi.org/10.1080/15213260802204355</a> · 2008 구자료</li>
+      <li id="s18"><a href="https://doi.org/10.1016/j.cognition.2016.11.007">doi.org/10.1016/j.cognition.2016.11.007</a> · 2016 구자료</li>
+      <li id="s19"><a href="https://doi.org/10.1080/17482798.2016.1203806">doi.org/10.1080/17482798.2016.1203806</a> · 2016 구자료</li>
+      <li id="s20"><a href="https://casenote.kr/%EB%B2%95%EB%A0%B9/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4_%EB%B3%B4%ED%98%B8%EB%B2%95/%EC%A0%9C22%EC%A1%B0%EC%9D%982">casenote.kr 개인정보보호법 제22조의2</a> · 발행일 미확인</li>
+      <li id="s21"><a href="https://zdnet.co.kr/view/?no=20260623095806">zdnet.co.kr/view/?no=20260623095806</a> · 2026-06-23</li>
+      <li id="s22"><a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB867">leginfo.legislature.ca.gov SB 867</a> · 2026-09-10 서명</li>
+      <li id="s23"><a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB1119">leginfo.legislature.ca.gov SB 1119</a> · 2026-09-10 서명</li>
+      <li id="s24"><a href="https://www.govinfo.gov/content/pkg/FR-2025-04-22/html/2025-05904.htm">govinfo.gov FR-2025-04-22 COPPA</a> · 2025-04-22</li>
+      <li id="s25"><a href="https://www.kqed.org/news/12070850/steer-clear-of-ai-companion-toys-for-kids-another-advocacy-group-warns">kqed.org/news/12070850/…</a> · 2026-01-23</li>
+      <li id="s26"><a href="https://www.scscc.or.kr/child/file/2026_childcare_body.pdf">2026 보육사업안내(scscc.or.kr PDF)</a> · 2025-12-31</li>
+      <li id="s27"><a href="https://news.unn.net/news/articleView.html?idxno=585404">news.unn.net …idxno=585404</a> · 2025-10-24</li>
+      <li id="s28"><a href="https://www.hankyung.com/article/2026082370611">hankyung.com/article/2026082370611</a> · 2026-08-23</li>
+      <li id="s29"><a href="https://aimatters.co.kr/news-report/ai-news/25415/">aimatters.co.kr/news-report/ai-news/25415</a> · 2025-07-02</li>
+      <li id="s30"><a href="https://www.mynewsdesk.com/us/tonies/pressreleases/tonies-continues-profitable-growth-with-record-results-in-2025-expects-strong-momentum-for-full-year-2026-expansion-of-ecosystem-around-toniebox-2-proves-a-global-success-3442746">mynewsdesk.com tonies FY2025</a> · 2026-04-14</li>
+      <li id="s31"><a href="https://www.nia.or.kr/site/nia_kor/ex/bbs/View.do?cbIdx=65914&amp;bcIdx=29171&amp;parentSeq=29171">nia.or.kr 2025 스마트폰 과의존 실태조사</a> · 2026-03</li>
+      <li id="s32"><a href="https://edition.cnn.com/2026/01/07/business/character-ai-google-settle-teen-suicide-lawsuit">edition.cnn.com/2026/01/07/business/character-ai-google-settle…</a> · 2026-01-07</li>
+      <li id="s33"><a href="https://techstartups.com/2024/10/31/buddy-ai-first-ai-tutor-for-kids-under-12-closes-11-million-in-seed-funding/">techstartups.com/2024/10/31/buddy-ai…</a> · 2024-10-31</li>
+      <li id="s34"><a href="https://www.pewresearch.org/internet/2026/02/24/what-parents-say-about-their-teens-ai-use/">pewresearch.org/internet/2026/02/24/…</a> · 2026-02-24</li>
+      <li id="s35"><a href="https://www.ice.go.kr/upload/afterschool/na/bbs_1541/2026/01/89e165203bc77268e8f4c6f3d7b3d150.pdf">2026 늘봄학교 운영 길라잡이(ice.go.kr PDF)</a> · 2026-01</li>
+      <li id="s36"><a href="https://doi.org/10.1177/0956797614536401">doi.org/10.1177/0956797614536401</a> · 2014 구자료</li>
+      <li id="s37"><a href="https://apps.apple.com/us/app/youstory-stories-that-listen/id6755137639">apps.apple.com …/id6755137639</a> · 발행일 미확인</li>
+      <li id="s38"><a href="https://www.kpf.or.kr/front/research/selfDetail.do?seq=596056&amp;link_g_homepage=F">kpf.or.kr 2023 어린이 미디어 이용 조사</a> · 2023-12-31</li>
+      <li id="s39"><a href="https://biz.heraldcorp.com/article/10853705">biz.heraldcorp.com/article/10853705</a> · 2026-08-27</li>
+      <li id="s40"><a href="https://v.daum.net/v/20260505220234766">v.daum.net/v/20260505220234766 (한국경제)</a> · 2026-05-05</li>
+      <li id="s41"><a href="https://www.insight.co.kr/news/566629">insight.co.kr/news/566629</a> · 2026-08-05</li>
+      <li id="s42"><a href="https://plus.pinkfong.com/ko/membership/select">plus.pinkfong.com 멤버십 요금</a> · 2026-09-15 조회</li>
+    </ol>
+  </section>
+
+  <footer class="end">전체 근거·계산식은 research/01~07.md, 원자료는 research/_raw/에 있다. 원가·시장 추정은 가정에 따라 달라지며, 확률은 판단값이다.</footer>
+</section>
+
+</main>
